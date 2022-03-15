@@ -13,6 +13,8 @@ import {
 	Textarea,
 	Section,
 	FormGroup,
+	Select,
+	Option,
 } from "./EditItemStyle";
 
 import { BsPlusCircle } from "react-icons/bs";
@@ -30,6 +32,9 @@ const EditItem = () => {
 	const [brand, setBrand] = useState("");
 	const [note, setNote] = useState("");
 	const [images, setImages] = useState("");
+	const [category, setCategory] = useState("");
+	const [subcategory, setSubcategory] = useState("");
+
 	const [file, setFile] = useState(null);
 
 	const location = useLocation();
@@ -50,6 +55,8 @@ const EditItem = () => {
 				setBrand(res.data.brand);
 				setNote(res.data.note);
 				setImages(res.data.images);
+				setCategory(res.data.category);
+				setSubcategory(res.data.subcategory);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -67,6 +74,8 @@ const EditItem = () => {
 			size,
 			brand,
 			note,
+			category,
+			subcategory,
 		};
 
 		if (file) {
@@ -123,11 +132,12 @@ const EditItem = () => {
 					</FormGroup>
 					<Section>
 						<FormGroup>
-							<Label>Item Name</Label>
+							<Label>Item Name*</Label>
 							<Input
 								type="text"
 								name="name"
 								value={name}
+								required
 								onChange={(event) => setName(event.target.value)}
 							/>
 						</FormGroup>
@@ -189,12 +199,87 @@ const EditItem = () => {
 					<Section>
 						<FormGroup>
 							<Label>Category</Label>
-							<Input type="text" name="category" />
+							<Select
+								name="category"
+								id=""
+								onChange={(event) => setCategory(event.target.value)}
+							>
+								<Option value="" hidden>
+									Selecte a category
+								</Option>
+								<Option value="clothing" selected={category === "clothing"}>
+									Clothing
+								</Option>
+								<Option
+									value="accessories"
+									selected={category === "accessories"}
+								>
+									Accessories
+								</Option>
+								<Option value="shoes" selected={category === "shoes"}>
+									Shoes
+								</Option>
+							</Select>
 						</FormGroup>
 						<FormGroup>
 							<Label>Sub Category</Label>
-
-							<Input type="text" name="subcategory" />
+							{category === "" && (
+								<Select>
+									<Option value="" disabled hidden>
+										Select a subcategory
+									</Option>
+								</Select>
+							)}
+							{category === "clothing" && (
+								<Select
+									name="subcategory"
+									id=""
+									onChange={(event) => setSubcategory(event.target.value)}
+								>
+									<Option value="" hidden>
+										Select a subcategory
+									</Option>
+									<Option value="outer">Outer</Option>
+									<Option value="tops">Tops</Option>
+									<Option value="bottoms">Bottoms</Option>
+									<Option value="sports">Sports</Option>
+									<Option value="underwear">Underwear</Option>
+								</Select>
+							)}
+							{category === "accessories" && (
+								<Select
+									name="subcategory"
+									id=""
+									onChange={(event) => setSubcategory(event.target.value)}
+								>
+									<Option value="" hidden>
+										Select a subcategory
+									</Option>
+									<Option value="bags">Bags</Option>
+									<Option value="jewelry">Jewelry</Option>
+									<Option value="sunglasses">Sunglasses</Option>
+									<Option value="hats">Hats</Option>
+									<Option value="wallets">Wallets</Option>
+									<Option value="belts">Belts</Option>
+								</Select>
+							)}
+							{category === "shoes" && (
+								<Select
+									name="subcategory"
+									id=""
+									onChange={(event) => setSubcategory(event.target.value)}
+								>
+									<Option value="" selected hidden>
+										Select a subcategory
+									</Option>
+									<Option value="sneakers">Sneakers</Option>
+									<Option value="dress">Dress</Option>
+									<Option value="sandals">Sandals</Option>
+									<Option value="boots">Boots</Option>
+									<Option value="heels">Heels</Option>
+									<Option value="loafers">Loafers</Option>
+								</Select>
+							)}
 						</FormGroup>
 					</Section>
 					<Label>Note</Label>

@@ -22,7 +22,7 @@ const UserLists = () => {
 			<Wrapper>
 				{users.map((otheruser, index) => (
 					<>
-						{!(otheruser._id === user._id) && (
+						{!(otheruser?._id === user?._id) && (
 							<UsercardSm key={index} otheruser={otheruser} />
 						)}
 					</>

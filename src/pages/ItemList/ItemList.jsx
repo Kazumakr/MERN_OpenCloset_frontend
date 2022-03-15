@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Items from "../../components/Items/Items";
 import Sortbar from "../../components/Sortbar/Sortbar";
-import SubMenu from "../../components/SubMenu/SubMenu";
 import Usercard from "../../components/Usercard/Usercard";
 
 import { axiosInstance } from "../../config";
+
+import { Container } from "./ItemListStyle";
 
 const ItemList = () => {
 	const [items, setItems] = useState([]);
@@ -23,6 +24,7 @@ const ItemList = () => {
 			.catch((err) => {
 				console.log(err);
 			});
+		console.log("items", items);
 	}, [search]);
 
 	useEffect(() => {
@@ -36,12 +38,11 @@ const ItemList = () => {
 			});
 	}, [path]);
 	return (
-		<>
+		<Container>
 			<Usercard pageuser={pageuser} />
-			{/* <SubMenu /> */}
 			<Sortbar />
 			<Items items={items} />
-		</>
+		</Container>
 	);
 };
 

@@ -36,6 +36,7 @@ export const Button = styled.button`
 export const Follow = styled.span`
 	font-size: 14px;
 	margin-right: 10px;
+	cursor: pointer;
 `;
 export const Gender = styled.span`
 	font-size: 14px;

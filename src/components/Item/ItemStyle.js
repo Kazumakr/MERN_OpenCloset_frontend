@@ -1,27 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-	/* background-color: gray; */
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	/* width: 270px; */
-	/* width: 24%; */
-	/* height: 500px; */
-	/* margin: 0px 25px 40px 25px; */
-	/* padding: 10px; */
 	margin-top: 10px;
-	/* &:hover {
-		transform: scale(1.05);
-	} */
 	cursor: pointer;
 	color: black;
 `;
 
 export const Img = styled.img`
 	width: 100%;
-	/* height: 100%; */
-	/* object-fit: cover; */
 `;
 export const ItemInfo = styled.div`
 	display: flex;
@@ -37,3 +26,28 @@ export const Price = styled.span`
 `;
 export const Color = styled.span``;
 export const Likes = styled.span``;
+export const Wrapper = styled.div`
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+`;
+export const Username = styled.span``;
+
+export const UserInfo = styled.div`
+	display: flex;
+	align-items: center;
+	height: 35px;
+	margin-top: 10px;
+	padding: 0 10px;
+	&:hover {
+		opacity: 0.7;
+	}
+`;
+
+export const UserImg = styled.img`
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 15px;
+`;

@@ -88,7 +88,6 @@ const SingleItem = () => {
 		await axiosInstance
 			.put(`/items/${item._id}/likes`, { userId: user._id })
 			.then((res) => {
-				console.log("res", res);
 				setIsLiked(true);
 				setItem(res.data);
 			})

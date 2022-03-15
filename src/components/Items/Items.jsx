@@ -10,23 +10,6 @@ const Items = ({ items }) => {
 					<Item item={item} />
 				</Link>
 			))}
-			{/* <Link to={"/items/itemid"} style={{ width: "24%" }}>
-				<Item />
-			</Link>
-			<Link to={"/items/itemid"} style={{ width: "24%" }}>
-				<Item />
-			</Link>
-			<Link to={"/items/itemid"} style={{ width: "24%" }}>
-				<Item />
-			</Link>
-			<Link to={"/items/itemid"} style={{ width: "24%" }}>
-				<Item />
-			</Link> */}
-			{/* <Item />
-			<Item />
-			<Item />
-			<Item />
-			<Item /> */}
 		</Container>
 	);
 };

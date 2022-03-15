@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { axiosInstance } from "../../config";
 import { Context } from "../../context/Context";
+import ModalFollowing from "../ModalFollowing/ModalFollowing";
+import ModalFollower from "../ModalFollower/ModalFollower";
 
 import {
 	Container,
@@ -14,9 +16,11 @@ import {
 	HeightNum,
 } from "./UsercardStyle";
 const Usercard = ({ pageuser }) => {
-	const { user } = useContext(Context);
+	const { user, dispatch } = useContext(Context);
 	const [isFollowed, setIsFollowed] = useState(false);
 	const [followers, setFollowers] = useState({});
+	const [showFollowing, setShowFollowing] = useState(false);
+	const [showFollower, setShowFollower] = useState(false);
 
 	const publicFolder = "http://localhost:5000/images/";
 	useEffect(() => {
@@ -27,25 +31,35 @@ const Usercard = ({ pageuser }) => {
 			setIsFollowed(false);
 		}
 	}, [pageuser]);
-	const handleFollow = (event) => {
-		// event.preventDefault();
+	const handleFollow = () => {
+		dispatch({ type: "UPDATE_START" });
 		axiosInstance
 			.post(`/users/${pageuser._id}/follow`, { userId: user._id })
 			.then((res) => {
-				setFollowers(res.data.followers);
+				setFollowers([...followers, res.data]);
+
 				setIsFollowed(true);
+				dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				dispatch({ type: "UPDATE_FAILURE" });
+
+				console.log(err);
+			});
 	};
-	const handleUnfollow = (event) => {
-		// event.preventDefault();
+	const handleUnfollow = () => {
+		dispatch({ type: "UPDATE_START" });
 		axiosInstance
 			.post(`/users/${pageuser._id}/unfollow`, { userId: user._id })
 			.then((res) => {
-				setFollowers(res.data.followers);
+				setFollowers(followers.filter((follower) => follower._id !== user._id));
 				setIsFollowed(false);
+				dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				dispatch({ type: "UPDATE_FAILURE" });
+				console.log(err);
+			});
 	};
 
 	return (
@@ -60,7 +74,6 @@ const Usercard = ({ pageuser }) => {
 			<UserInfo>
 				<div>
 					<Name>{pageuser?.username}</Name>
-					{/* {!(user._id === pageuser._id) && */}
 					{isFollowed ? (
 						<Button
 							style={
@@ -86,8 +99,25 @@ const Usercard = ({ pageuser }) => {
 					)}
 				</div>
 				<div>
-					<Follow>{pageuser.following?.length} following</Follow>
-					<Follow>{followers?.length} followers</Follow>
+					<Follow onClick={() => setShowFollowing(true)}>
+						{pageuser.following?.length} following
+					</Follow>
+					<Follow onClick={() => setShowFollower(true)}>
+						{followers?.length} followers
+					</Follow>
+
+					<ModalFollowing
+						showFollowing={showFollowing}
+						setShowFollowing={setShowFollowing}
+						following={pageuser.following}
+					/>
+					<ModalFollower
+						showFollower={showFollower}
+						setShowFollower={setShowFollower}
+						followers={pageuser.followers}
+						handleFollow={handleFollow}
+						handleUnfollow={handleUnfollow}
+					/>
 				</div>
 				<Gender>{pageuser?.gender}</Gender>
 				{pageuser?.height && <HeightNum>{pageuser?.height} cm</HeightNum>}

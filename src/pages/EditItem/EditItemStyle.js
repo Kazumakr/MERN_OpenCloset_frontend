@@ -26,7 +26,6 @@ export const DeleteTitle = styled.div`
 export const FormGroup = styled.div`
 	display: flex;
 	flex-direction: column;
-	/* width: 320px; */
 	width: 40%;
 `;
 export const Form = styled.form`
@@ -90,3 +89,14 @@ export const Section = styled.div`
 	display: flex;
 	justify-content: space-between;
 `;
+
+export const Select = styled.select`
+	color: gray;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 30px;
+	border: none;
+	border-bottom: 1px solid lightgray;
+`;
+
+export const Option = styled.option``;

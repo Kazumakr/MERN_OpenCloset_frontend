@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
 	width: 100%;
@@ -74,8 +75,8 @@ export const SubList = styled.ul`
 `;
 
 export const Img = styled.img`
-	width: 40px;
-	height: 40px;
+	width: 35px;
+	height: 35px;
 	border-radius: 50%;
 	object-fit: cover;
 	margin: 0 10px;
@@ -112,4 +113,8 @@ export const UserMenu = styled.ul`
 			text-decoration: underline;
 		}
 	}
+`;
+
+export const StyledLink = styled(Link)`
+	color: black;
 `;

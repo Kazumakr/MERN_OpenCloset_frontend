@@ -94,10 +94,11 @@ const AddItem = () => {
 					</FormGroup>
 					<Section>
 						<FormGroup>
-							<Label>Item Name</Label>
+							<Label>Item Name*</Label>
 							<Input
 								type="text"
 								name="name"
+								required
 								onChange={(event) => setName(event.target.value)}
 							/>
 						</FormGroup>
@@ -159,11 +160,21 @@ const AddItem = () => {
 								id=""
 								onChange={(event) => setCategory(event.target.value)}
 							>
-								<Option value="" selected hidden>
+								<Option value="" hidden>
 									Selecte a category
 								</Option>
-								<Option value="clothing">Clothing</Option>
-								<Option value="shoes">Shoes</Option>
+								<Option value="clothing" selected={category === "clothing"}>
+									Clothing
+								</Option>
+								<Option
+									value="accessories"
+									selected={category === "accessories"}
+								>
+									Accessories
+								</Option>
+								<Option value="shoes" selected={category === "shoes"}>
+									Shoes
+								</Option>
 							</Select>
 						</FormGroup>
 						<FormGroup>
@@ -187,6 +198,8 @@ const AddItem = () => {
 									<Option value="outer">Outer</Option>
 									<Option value="tops">Tops</Option>
 									<Option value="bottoms">Bottoms</Option>
+									<Option value="sports">Sports</Option>
+									<Option value="underwear">Underwear</Option>
 								</Select>
 							)}
 							{category === "accessories" && (
@@ -198,9 +211,12 @@ const AddItem = () => {
 									<Option value="" hidden>
 										Select a subcategory
 									</Option>
-									<Option value="bags">Outer</Option>
+									<Option value="bags">Bags</Option>
 									<Option value="jewelry">Jewelry</Option>
 									<Option value="sunglasses">Sunglasses</Option>
+									<Option value="hats">Hats</Option>
+									<Option value="wallets">Wallets</Option>
+									<Option value="belts">Belts</Option>
 								</Select>
 							)}
 							{category === "shoes" && (
@@ -214,7 +230,10 @@ const AddItem = () => {
 									</Option>
 									<Option value="sneakers">Sneakers</Option>
 									<Option value="dress">Dress</Option>
+									<Option value="sandals">Sandals</Option>
 									<Option value="boots">Boots</Option>
+									<Option value="heels">Heels</Option>
+									<Option value="loafers">Loafers</Option>
 								</Select>
 							)}
 						</FormGroup>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { axiosInstance } from "../../config";
 import { Context } from "../../context/Context";
 import {
@@ -12,6 +12,7 @@ import {
 } from "./DeleteAccountStyle";
 const DeleteAccount = () => {
 	const { user, dispatch } = useContext(Context);
+	const [email, setEmail] = useState("");
 	const handleDelete = async () => {
 		await axiosInstance
 			.delete(`/users/${user._id}`, { data: { userId: user._id } })
@@ -41,8 +42,14 @@ const DeleteAccount = () => {
 			</Annouce>
 			<Form onSubmit={handleDelete}>
 				<Label>Email</Label>
-				<Input type="email" placeholder="Enter Email" />
-				<Button type="submit">Delete Account</Button>
+				<Input
+					type="email"
+					placeholder="Enter Email"
+					onChange={(event) => setEmail(event.target.value)}
+				/>
+				<Button type="submit" disabled={!(email === user.email)}>
+					Delete Account
+				</Button>
 			</Form>
 		</Container>
 	);

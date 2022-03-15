@@ -1,37 +1,42 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
-import Select from "react-select";
 import {
 	Container,
 	Left,
 	Right,
 	Input,
-	Span,
 	Hr,
 	Wrapper,
-	FilterMenu,
+	Select,
+	Option,
+	MultipleSelection,
+	SelectBox,
+	OverSelect,
+	CheckBoxes,
+	Label,
 } from "./SortbarStyle";
 
-import { useLocation, useNavigate } from "react-router-dom";
-
-const ColorOptions = [
-	{ value: "newest", label: "Newest" },
-	{ value: "lowest", label: "Lowest Price" },
-	{ value: "highest", label: "Highest Price" },
-];
-
-const customStyles = {
-	container: (provided) => ({
-		...provided,
-		width: 150,
-	}),
-};
+import { useNavigate } from "react-router-dom";
 
 const Sortbar = () => {
-	const [isClicked, setIsClicked] = useState(false);
+	const [show, setShow] = useState(false);
 	const navigate = useNavigate();
 
+	const ref = useRef();
+
 	const url = new URL(window.location.href);
+
+	useEffect(() => {
+		const ClickedOutside = (e) => {
+			if (show && ref.current && !ref.current.contains(e.target)) {
+				setShow(false);
+			}
+		};
+		document.addEventListener("mousedown", ClickedOutside);
+		return () => {
+			document.removeEventListener("mousedown", ClickedOutside);
+		};
+	}, [show]);
 
 	const handleChange = (event) => {
 		navigate(`?search=${event.target.value}`);
@@ -55,68 +60,54 @@ const Sortbar = () => {
 		// url.searchParams.append("color", event.target.value);
 	};
 
+	const handleSort = (event) => {
+		navigate(`?sort=${event.target.value}`);
+	};
+
 	return (
 		<>
 			<Container>
 				<Hr />
 				<Wrapper>
 					<Left>
-						<Span onClick={() => setIsClicked(!isClicked)}>Filter</Span>
-						{isClicked ? (
-							<FilterMenu>
-								<div onClick={() => setIsClicked(false)}>close</div>
-								<div>
-									<label>Color</label>
-									<div>
-										<input
-											type="checkbox"
-											value="black"
-											onChange={handleColor}
-										/>
-										<span>Black</span>
-										<input
-											type="checkbox"
-											value="white"
-											onChange={handleColor}
-										/>
-										<span>White</span>
-										<input type="checkbox" />
-										<span>Black</span>
-									</div>
-								</div>
-								<div>
-									<label>Size</label>
-									<div>
-										<input type="checkbox" />
-										<span>Black</span>
-										<input type="checkbox" />
-										<span>Black</span>
-										<input type="checkbox" />
-										<span>Black</span>
-									</div>
-								</div>
-								<div>
-									<label>Fabric</label>
-									<div>
-										<input type="checkbox" />
-										<span>Black</span>
-										<input type="checkbox" />
-										<span>Black</span>
-										<input type="checkbox" />
-										<span>Black</span>
-									</div>
-								</div>
-							</FilterMenu>
-						) : null}
-						<Select
-							defaultValue=""
-							name="sort"
-							options={ColorOptions}
-							// className="basic"
-							// classNamePrefix="select"
-							placeholder="Sort By"
-							styles={customStyles}
-						/>
+						<MultipleSelection ref={ref}>
+							<SelectBox onClick={() => setShow(!show)}>
+								<Select>
+									<option>Color</option>
+								</Select>
+								<OverSelect></OverSelect>
+							</SelectBox>
+
+							<CheckBoxes
+								style={show ? { display: "block" } : { display: "none" }}
+								id="checkBoxes"
+							>
+								<Label>
+									<input type="checkbox" value="black" onChange={handleColor} />
+									Black
+								</Label>
+
+								<Label>
+									<input type="checkbox" value="white" onChange={handleColor} />
+									White
+								</Label>
+								<Label>
+									<input type="checkbox" value="red" onChange={handleColor} />
+									Red
+								</Label>
+								<Label>
+									<input type="checkbox" value="blue" onChange={handleColor} />
+									Blue
+								</Label>
+							</CheckBoxes>
+						</MultipleSelection>
+
+						<Select name="sort" onChange={handleSort}>
+							<Option value="">Sort By</Option>
+							<Option value="newest">Newest</Option>
+							<Option value="lowest">Lowest Price</Option>
+							<Option value="highest">Highest Price</Option>
+						</Select>
 					</Left>
 					<Right>
 						<Input

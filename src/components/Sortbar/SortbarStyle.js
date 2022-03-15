@@ -21,11 +21,7 @@ export const Input = styled.input`
 	padding: 5px;
 	font-family: FontAwesome;
 `;
-export const Span = styled.span`
-	font-size: 18px;
-	margin-right: 20px;
-	cursor: pointer;
-`;
+
 export const Hr = styled.hr`
 	margin: 15px 0;
 	opacity: 0.5;
@@ -33,15 +29,52 @@ export const Hr = styled.hr`
 	align-self: center;
 `;
 
-export const FilterMenu = styled.div`
-	width: 200px;
-	height: 150px;
-	background-color: white;
-	box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
+export const Select = styled.select`
+	color: gray;
+	margin-top: 10px;
+
+	height: 30px;
+	border: none;
+`;
+
+export const Option = styled.option``;
+
+export const MultipleSelection = styled.div`
+	width: 60px;
+`;
+
+export const SelectBox = styled.div`
+	position: relative;
+	select {
+		width: 100%;
+	}
+`;
+
+export const OverSelect = styled.div`
 	position: absolute;
-	top: 45px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 10px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+`;
+
+export const CheckBoxes = styled.div`
+	display: none;
+	border: 1px lightgray solid;
+	padding: 5px;
+	width: 80px;
+	position: absolute;
+	background-color: white;
+	/* top: 100%;
+	left: 100%; */
+`;
+
+export const Label = styled.label`
+	display: block;
+	margin-bottom: 3px;
+
+	&:hover {
+		opacity: 0.7;
+		cursor: pointer;
+	}
 `;

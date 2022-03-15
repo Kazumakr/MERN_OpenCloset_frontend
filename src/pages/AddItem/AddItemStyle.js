@@ -26,7 +26,6 @@ export const DeleteTitle = styled.div`
 export const FormGroup = styled.div`
 	display: flex;
 	flex-direction: column;
-	/* width: 320px; */
 	width: 40%;
 `;
 export const Form = styled.form`

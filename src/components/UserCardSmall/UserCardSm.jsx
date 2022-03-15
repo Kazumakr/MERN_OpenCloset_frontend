@@ -18,14 +18,13 @@ const UsercardSm = ({ otheruser }) => {
 	const [followers, setFollowers] = useState({});
 	useEffect(() => {
 		setFollowers(otheruser.followers);
-		if (otheruser.followers?.some((follower) => follower._id === user._id)) {
+		if (otheruser.followers?.some((follower) => follower._id === user?._id)) {
 			setIsFollowed(true);
 		} else {
 			setIsFollowed(false);
 		}
 	}, [otheruser]);
-	const handleFollow = (event) => {
-		// event.preventDefault();
+	const handleFollow = () => {
 		axiosInstance
 			.post(`/users/${otheruser._id}/follow`, { userId: user._id })
 			.then((res) => {
@@ -34,8 +33,7 @@ const UsercardSm = ({ otheruser }) => {
 			})
 			.catch((err) => console.log(err));
 	};
-	const handleUnfollow = (event) => {
-		// event.preventDefault();
+	const handleUnfollow = () => {
 		axiosInstance
 			.post(`/users/${otheruser._id}/unfollow`, { userId: user._id })
 			.then((res) => {
@@ -46,7 +44,7 @@ const UsercardSm = ({ otheruser }) => {
 	};
 	return (
 		<Container>
-			<Link to={`/${user._id}`}>
+			<Link to={`/${otheruser._id}`}>
 				<Img
 					src={
 						otheruser.photo
@@ -58,13 +56,13 @@ const UsercardSm = ({ otheruser }) => {
 			</Link>
 			<UserInfo>
 				<div>
-					<Link to={`/${otheruser._id}`}>
+					<Link to={`/${otheruser._id}`} style={{ color: "black" }}>
 						<Name>{otheruser.username}</Name>
 					</Link>
 					{isFollowed ? (
 						<Button
 							style={
-								user._id === otheruser._id
+								user?._id === otheruser._id
 									? { display: "none" }
 									: {
 											background: "white",
@@ -79,7 +77,7 @@ const UsercardSm = ({ otheruser }) => {
 					) : (
 						<Button
 							onClick={handleFollow}
-							style={user._id === otheruser._id ? { display: "none" } : {}}
+							style={user?._id === otheruser._id ? { display: "none" } : {}}
 						>
 							Follow
 						</Button>
