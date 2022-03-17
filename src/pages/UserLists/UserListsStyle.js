@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	display: flex;
@@ -10,5 +11,14 @@ export const Wrapper = styled.div`
 	padding: 15px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
+	width: 90%;
+	${tablet({ width: "100%" })}
+	${mobile({ justifyContent: "center" })};
+`;
+
+export const Title = styled.span`
+	font-size: 34px;
+	margin-top: 10px;
+	${mobile({ fontSize: "25px" })}
 `;

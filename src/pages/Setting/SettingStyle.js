@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	display: flex;
@@ -7,6 +8,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
 	width: 50vw;
 	padding: 20px;
+	${mobile({ width: "70vw" })}
 `;
 export const TitleContainer = styled.div`
 	display: flex;
@@ -17,6 +19,7 @@ export const TitleContainer = styled.div`
 export const UpdateTitle = styled.div`
 	font-size: 30px;
 	margin-bottom: 20px;
+	${mobile({ fontSize: "24px" })}
 `;
 export const DeleteTitle = styled.div`
 	color: red;
@@ -69,6 +72,7 @@ export const UpdateButton = styled.button`
 export const ButtonContainer = styled.div`
 	display: flex;
 	align-self: center;
+	${mobile({ width: "100%" })}
 `;
 
 export const Textarea = styled.textarea`
@@ -86,9 +90,15 @@ export const Option = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin-top: 20px;
+	${mobile({ width: "100%", fontSize: "13px" })}
 `;
 
 export const FormGroupCheck = styled.div`
 	display: flex;
 	align-items: center;
+`;
+
+export const BioCounter = styled.span`
+	font-size: 14px;
+	align-self: flex-end;
 `;

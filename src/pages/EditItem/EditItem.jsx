@@ -26,7 +26,7 @@ import { Context } from "../../context/Context";
 const EditItem = () => {
 	const [name, setName] = useState("");
 	const [fabric, setFabric] = useState("");
-	const [price, setPrice] = useState(null);
+	const [price, setPrice] = useState("");
 	const [color, setColor] = useState("");
 	const [size, setSize] = useState("");
 	const [brand, setBrand] = useState("");
@@ -43,6 +43,23 @@ const EditItem = () => {
 	const { user } = useContext(Context);
 
 	const publicFolder = "http://localhost:5000/images/";
+
+	const ColorOptions = [
+		{ name: "White", value: "white" },
+		{ name: "Black", value: "black" },
+		{ name: "Gold", value: "gold" },
+		{ name: "Silver", value: "silver" },
+		{ name: "Blue", value: "blue" },
+		{ name: "Green", value: "green" },
+		{ name: "Pink", value: "pink" },
+		{ name: "Red", value: "red" },
+		{ name: "Gray", value: "gray" },
+		{ name: "Orange", value: "orange" },
+		{ name: "Purple", value: "purple" },
+		{ name: "Brown", value: "brown" },
+		{ name: "Beige", value: "beige" },
+		{ name: "Khaki", value: "khaki" },
+	];
 
 	useEffect(() => {
 		axiosInstance
@@ -67,6 +84,7 @@ const EditItem = () => {
 		event.preventDefault();
 		const updatedItem = {
 			username: user.username,
+			user: user._id,
 			name,
 			fabric,
 			price,
@@ -93,7 +111,9 @@ const EditItem = () => {
 		}
 		await axiosInstance
 			.put(`/items/${path}`, updatedItem)
-			.then((res) => {})
+			.then((res) => {
+				window.location.replace("/items/" + res.data._id);
+			})
 			.catch((err) => {
 				console.log(err);
 			});
@@ -107,7 +127,7 @@ const EditItem = () => {
 				<Form onSubmit={handleUpdate}>
 					<FormGroup>
 						<Label>Image</Label>
-						{/* {file && <Img src={URL.createObjectURL(file)} alt="" />} */}
+
 						{file ? (
 							<Img src={URL.createObjectURL(file)} />
 						) : (
@@ -155,12 +175,20 @@ const EditItem = () => {
 					<Section>
 						<FormGroup>
 							<Label>Color</Label>
-							<Input
-								type="text"
+							<Select
+								defaultValue={"DEFAULT"}
 								name="color"
-								value={color}
 								onChange={(event) => setColor(event.target.value)}
-							/>
+							>
+								<Option value="DEFAULT" hidden>
+									Selecte a color
+								</Option>
+								{ColorOptions.map((coloroption, index) => (
+									<Option key={index} value={coloroption.value}>
+										{coloroption.name}
+									</Option>
+								))}
+							</Select>
 						</FormGroup>
 						<FormGroup>
 							<Label>Size</Label>
@@ -189,7 +217,7 @@ const EditItem = () => {
 								<Input
 									type="number"
 									name="price"
-									value={price}
+									value={price == null ? "" : price}
 									onChange={(event) => setPrice(event.target.value)}
 								/>
 								USD
@@ -200,25 +228,17 @@ const EditItem = () => {
 						<FormGroup>
 							<Label>Category</Label>
 							<Select
+								defaultValue={"DEFAULT"}
 								name="category"
 								id=""
 								onChange={(event) => setCategory(event.target.value)}
 							>
-								<Option value="" hidden>
+								<Option value="DEFAULT" hidden>
 									Selecte a category
 								</Option>
-								<Option value="clothing" selected={category === "clothing"}>
-									Clothing
-								</Option>
-								<Option
-									value="accessories"
-									selected={category === "accessories"}
-								>
-									Accessories
-								</Option>
-								<Option value="shoes" selected={category === "shoes"}>
-									Shoes
-								</Option>
+								<Option value="clothing">Clothing</Option>
+								<Option value="accessories">Accessories</Option>
+								<Option value="shoes">Shoes</Option>
 							</Select>
 						</FormGroup>
 						<FormGroup>
@@ -232,11 +252,12 @@ const EditItem = () => {
 							)}
 							{category === "clothing" && (
 								<Select
+									defaultValue={"DEFAULT"}
 									name="subcategory"
 									id=""
 									onChange={(event) => setSubcategory(event.target.value)}
 								>
-									<Option value="" hidden>
+									<Option value="DEFAULT" hidden>
 										Select a subcategory
 									</Option>
 									<Option value="outer">Outer</Option>
@@ -248,11 +269,12 @@ const EditItem = () => {
 							)}
 							{category === "accessories" && (
 								<Select
+									defaultValue={"DEFAULT"}
 									name="subcategory"
 									id=""
 									onChange={(event) => setSubcategory(event.target.value)}
 								>
-									<Option value="" hidden>
+									<Option value="DEFAULT" hidden>
 										Select a subcategory
 									</Option>
 									<Option value="bags">Bags</Option>
@@ -265,11 +287,12 @@ const EditItem = () => {
 							)}
 							{category === "shoes" && (
 								<Select
+									defaultValue={"DEFAULT"}
 									name="subcategory"
 									id=""
 									onChange={(event) => setSubcategory(event.target.value)}
 								>
-									<Option value="" selected hidden>
+									<Option value="DEFAULT" selected hidden>
 										Select a subcategory
 									</Option>
 									<Option value="sneakers">Sneakers</Option>

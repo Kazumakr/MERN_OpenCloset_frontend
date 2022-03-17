@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import {
 	Container,
@@ -13,20 +13,42 @@ import {
 	UserMenu,
 	UserContainer,
 	StyledLink,
+	HamburgerContainer,
+	MobileNavList,
+	MobileNavlistItem,
+	Wrapper,
 } from "./NavbarStyle";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../../context/Context";
 
 const Navbar = () => {
 	const { user, dispatch } = useContext(Context);
+	const [open, setOpen] = useState(false);
+	const [show, setShow] = useState(false);
+	const ref = useRef();
+
 	const publicFolder = "http://localhost:5000/images/";
 
 	const location = useLocation();
 	const path = location.pathname.split("/")[1];
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const ClickedOutside = (e) => {
+			if (show && ref.current && !ref.current.contains(e.target)) {
+				setShow(false);
+			}
+		};
+		document.addEventListener("mousedown", ClickedOutside);
+		return () => {
+			document.removeEventListener("mousedown", ClickedOutside);
+		};
+	}, [show]);
 
 	const handleLogout = () => {
 		dispatch({ type: "LOGOUT" });
+		navigate("/");
 	};
 	return (
 		<Container>
@@ -43,81 +65,97 @@ const Navbar = () => {
 			path === "items" ? (
 				<Center style={{ display: "none" }}></Center>
 			) : (
-				<Center
-					style={
-						path === "setting" ||
-						path === "users" ||
-						path === "additem" ||
-						path === "items"
-							? { display: "none" }
-							: { display: "block" }
-					}
-				>
+				<Center>
 					<NavList>
 						<NavListItem>
 							<StyledLink to={`${path}/?category=clothing`}>
-								<li>Clothing</li>
+								Clothing
 							</StyledLink>
+
 							<SubList>
-								<StyledLink to={`${path}/?subcategory=outer`}>
-									<li>Outer</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=tops`}>
-									<li>Tops</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=bottoms`}>
-									<li>Bottoms</li>
-								</StyledLink>
+								<li>
+									<StyledLink to={`${path}/?subcategory=outer`}>
+										Outer
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=tops`}>Tops</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=bottoms`}>
+										Bottoms
+									</StyledLink>
+								</li>
 							</SubList>
 						</NavListItem>
 						<NavListItem>
 							<StyledLink to={`${path}/?category=accessories`}>
-								<li>Accessories</li>
+								Accessories
 							</StyledLink>
+
 							<SubList>
-								<StyledLink to={`${path}/?subcategory=bags`}>
-									<li>Bags</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=jewelry`}>
-									<li>Jewerly</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=sunglasses`}>
-									<li>Sunglass</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=hats`}>
-									<li>Hats</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=wallets`}>
-									<li>Wallets</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=belts`}>
-									<li>Belts</li>
-								</StyledLink>
+								<li>
+									<StyledLink to={`${path}/?subcategory=bags`}>Bags</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=jewelry`}>
+										Jewerly
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=sunglasses`}>
+										Sunglass
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=hats`}>Hats</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=wallets`}>
+										Wallets
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=belts`}>
+										Belts
+									</StyledLink>
+								</li>
 							</SubList>
 						</NavListItem>
 						<NavListItem>
-							<StyledLink to={`${path}/?category=shoes`}>
-								<li>Shoes</li>
-							</StyledLink>
+							<StyledLink to={`${path}/?category=shoes`}>Shoes</StyledLink>
+
 							<SubList>
-								<StyledLink to={`${path}/?subcategory=sneakers`}>
-									<li>Sneakers</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=dress`}>
-									<li>Dress</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=sandals`}>
-									<li>Sandals</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=boots`}>
-									<li>Boots</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=heels`}>
-									<li>Heels</li>
-								</StyledLink>
-								<StyledLink to={`${path}/?subcategory=loafers`}>
-									<li>Loafers</li>
-								</StyledLink>
+								<li>
+									<StyledLink to={`${path}/?subcategory=sneakers`}>
+										Sneakers
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=dress`}>
+										Dress
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=sandals`}>
+										Sandals
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=boots`}>
+										Boots
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=heels`}>
+										Heels
+									</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={`${path}/?subcategory=loafers`}>
+										Loafers
+									</StyledLink>
+								</li>
 							</SubList>
 						</NavListItem>
 					</NavList>
@@ -126,6 +164,7 @@ const Navbar = () => {
 			{!(user === null) && (
 				<Right>
 					<NavList
+						ref={ref}
 						style={
 							path === "" ||
 							path === "setting" ||
@@ -137,7 +176,7 @@ const Navbar = () => {
 						}
 					>
 						<StyledLink to={`${user?._id}`}>
-							<NavListItem>My Items</NavListItem>
+							<NavListItem>Items</NavListItem>
 						</StyledLink>
 						<StyledLink to={"/users"}>
 							<NavListItem>Users</NavListItem>
@@ -145,9 +184,8 @@ const Navbar = () => {
 						<StyledLink to={"/additem"}>
 							<NavListItem>Add</NavListItem>
 						</StyledLink>
-						{/* <StyledLink to={"/login"}> */}
-						{/* <NavListItem>Log In</NavListItem> */}
-						<UserContainer>
+
+						<UserContainer onClick={() => setShow(!show)}>
 							<Img
 								src={
 									user?.photo
@@ -156,15 +194,59 @@ const Navbar = () => {
 								}
 							/>
 							<span>{user?.username}</span>
-							<UserMenu>
-								<StyledLink to={"/setting"}>
-									<li>Setting</li>
-								</StyledLink>
+							<UserMenu
+								style={show ? { display: "block" } : { display: "none" }}
+							>
+								<li>
+									<StyledLink to={`/likeditems`}>Liked Items</StyledLink>
+								</li>
+								<li>
+									<StyledLink to={"/setting"}>Setting</StyledLink>
+								</li>
 								<li onClick={handleLogout}>Logout</li>
 							</UserMenu>
 						</UserContainer>
-						{/* </StyledLink> */}
 					</NavList>
+
+					<div>
+						<HamburgerContainer open={open} onClick={() => setOpen(!open)}>
+							<div />
+							<div />
+							<div />
+						</HamburgerContainer>
+						<MobileNavList open={open} onClick={() => setOpen(!open)}>
+							<MobileNavlistItem>
+								<StyledLink to={`${user?._id}`}>
+									<Wrapper>Items</Wrapper>
+								</StyledLink>
+							</MobileNavlistItem>
+							<MobileNavlistItem>
+								<StyledLink to="/users">
+									<Wrapper>Users</Wrapper>
+								</StyledLink>
+							</MobileNavlistItem>
+
+							<MobileNavlistItem>
+								<StyledLink to="/additem">
+									<Wrapper>Add</Wrapper>
+								</StyledLink>
+							</MobileNavlistItem>
+							<MobileNavlistItem>
+								<StyledLink to="/likeditems">
+									<Wrapper>Liked Items</Wrapper>
+								</StyledLink>
+							</MobileNavlistItem>
+							<MobileNavlistItem>
+								<StyledLink to="/setting">
+									<Wrapper>Setting</Wrapper>
+								</StyledLink>
+							</MobileNavlistItem>
+
+							<MobileNavlistItem onClick={handleLogout}>
+								<Wrapper>Logout</Wrapper>
+							</MobileNavlistItem>
+						</MobileNavList>
+					</div>
 				</Right>
 			)}
 		</Container>

@@ -15,6 +15,7 @@ import UserLists from "./pages/UserLists/UserLists";
 
 import { Context } from "./context/Context";
 import ItemList from "./pages/ItemList/ItemList";
+import LikedItems from "./pages/LikedItems/LikedItems";
 
 function App() {
 	const { user } = useContext(Context);
@@ -26,15 +27,25 @@ function App() {
 			<Routes>
 				<Route exact path="/" element={user ? <Home /> : <Login />} />
 				<Route exact path="/:id" element={user ? <ItemList /> : <Login />} />
-				<Route path="/items/:id" element={<SingleItemPage />} />
+				<Route
+					path="/items/:id"
+					element={user ? <SingleItemPage /> : <Login />}
+				/>
 				<Route path="/users" element={<UserLists />} />
 				<Route path="/login" element={user ? <Home /> : <Login />} />
 				<Route path="/signup" element={user ? <Home /> : <Signup />} />
-				<Route path="/changepassword" element={<ChangePassword />} />
-				<Route path="/deleteaccount" element={<DeleteAccount />} />
-				<Route path="/setting" element={<Setting />} />
-				<Route path="/additem" element={<AddItem />} />
-				<Route path="/edititem/:id" element={<EditItem />} />
+				<Route
+					path="/changepassword"
+					element={user ? <ChangePassword /> : <Login />}
+				/>
+				<Route
+					path="/deleteaccount"
+					element={user ? <DeleteAccount /> : <Login />}
+				/>
+				<Route path="/setting" element={user ? <Setting /> : <Login />} />
+				<Route path="/additem" element={user ? <AddItem /> : <Login />} />
+				<Route path="/edititem/:id" element={user ? <EditItem /> : <Login />} />
+				<Route path="/likeditems" element={user ? <LikedItems /> : <Login />} />
 			</Routes>
 			<Footer />
 		</BrowserRouter>

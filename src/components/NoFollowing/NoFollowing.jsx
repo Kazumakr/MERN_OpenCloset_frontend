@@ -7,16 +7,16 @@ import {
 	Subtitle,
 	Button,
 	ButtonText,
-} from "./HeroStyle";
-const Hero = () => {
+} from "./NoFollowingStyle";
+const NoFollowing = () => {
 	return (
 		<Container>
 			<Content>
-				<Title>OpenCloset</Title>
-				<Subtitle>Let's register your items and open your closet</Subtitle>
-				<Link to="/additem">
+				<Title>No Following user</Title>
+				<Subtitle>Follow more users and explore their closet</Subtitle>
+				<Link to="/users">
 					<Button>
-						<ButtonText>Add ITEM</ButtonText>
+						<ButtonText>DISCOVER</ButtonText>
 					</Button>
 				</Link>
 			</Content>
@@ -24,4 +24,4 @@ const Hero = () => {
 	);
 };
 
-export default Hero;
+export default NoFollowing;

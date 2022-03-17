@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	height: calc(100vh - 100px);
@@ -8,13 +9,15 @@ export const Container = styled.div`
 	justify-content: center;
 `;
 export const Title = styled.span`
-	font-size: 50px;
+	font-size: 40px;
+	${mobile({ fontSize: "30px" })}
 `;
 export const Form = styled.form`
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	width: 400px;
+	${mobile({ width: "80%" })}
 `;
 export const Label = styled.label`
 	margin: 10px 0;

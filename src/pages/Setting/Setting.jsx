@@ -15,6 +15,7 @@ import {
 	Textarea,
 	Option,
 	FormGroupCheck,
+	BioCounter,
 } from "./SettingStyle";
 
 import { Link } from "react-router-dom";
@@ -73,7 +74,6 @@ const Setting = () => {
 		await axiosInstance
 			.put("/users/" + user._id, updatedUser)
 			.then((res) => {
-				console.log("success");
 				setSuccess(true);
 				dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
 			})
@@ -100,7 +100,7 @@ const Setting = () => {
 						) : (
 							<Img
 								src={
-									user.photo
+									user?.photo
 										? "http://localhost:5000/api/image/" + user.photo
 										: publicFolder + "NoImage.png"
 								}
@@ -160,7 +160,7 @@ const Setting = () => {
 						<Input
 							type="number"
 							name="height"
-							value={height}
+							value={height ?? ""}
 							onChange={(event) => setHeight(event.target.value)}
 						/>
 						cm
@@ -169,9 +169,12 @@ const Setting = () => {
 					<Textarea
 						type="text"
 						name="bio"
+						maxLength="150"
 						value={bio}
+						id="bioarea"
 						onChange={(event) => setBio(event.target.value)}
 					/>
+					<BioCounter>{bio?.length}/150</BioCounter>
 					<ButtonContainer>
 						<UpdateButton type="submit">Update</UpdateButton>
 					</ButtonContainer>

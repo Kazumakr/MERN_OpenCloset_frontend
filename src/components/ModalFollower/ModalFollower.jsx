@@ -6,6 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import {
 	Overlay,
 	Content,
+	Title,
 	UserContainer,
 	Img,
 	Name,
@@ -22,7 +23,7 @@ const ModalFollower = ({ showFollower, setShowFollower, followers }) => {
 			<Overlay onClick={() => setShowFollower(false)}>
 				<Content onClick={(event) => event.stopPropagation()}>
 					<Wrapper>
-						<h2>Followers</h2>
+						<Title>Followers</Title>
 						<AiOutlineClose
 							style={{ fontSize: "18px", cursor: "pointer" }}
 							onClick={() => {

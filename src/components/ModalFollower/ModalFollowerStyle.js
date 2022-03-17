@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Overlay = styled.div`
 	position: fixed;
@@ -15,10 +16,15 @@ export const Overlay = styled.div`
 `;
 export const Content = styled.div`
 	z-index: 2;
-	width: 20%;
+	width: 240px;
 	padding: 1em;
 	background: #fff;
 	border-radius: 10px;
+`;
+
+export const Title = styled.span`
+	font-size: 24px;
+	font-weight: bold;
 `;
 export const UserContainer = styled.div`
 	display: flex;

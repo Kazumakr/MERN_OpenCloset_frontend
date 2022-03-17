@@ -4,6 +4,8 @@ import { mobile, tablet } from "../../responsive";
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 50%;
+	${mobile({ width: "90%" })}
 `;
 
 export const Wrapper = styled.div`
@@ -11,7 +13,6 @@ export const Wrapper = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 20px;
-	${mobile({ flexDirection: "column-reverse", alignItems: "unset" })}
 `;
 export const Left = styled.div`
 	display: flex;
@@ -25,7 +26,6 @@ export const Input = styled.input`
 	font-family: FontAwesome;
 	border: none;
 	border-bottom: 1px solid lightgray;
-	${mobile({ width: "50%" })}
 	&:focus {
 		outline: none;
 		border-bottom: 2px solid black;
@@ -48,21 +48,10 @@ export const Select = styled.select`
 	border: none;
 	${mobile({ fontSize: "12px" })}
 `;
-export const MobileSelect = styled.select`
-	color: gray;
-	margin-top: 10px;
-	width: 70px;
-	font-size: 14px;
-	height: 30px;
-	border: none;
-	display: none;
-	${tablet({ display: "block" })}
-	${mobile({ fontSize: "12px" })}
-`;
 
 export const Option = styled.option``;
 
-export const MultipleSelection = styled.div`
+export const HeightSelection = styled.div`
 	width: 60px;
 	margin-right: 5px;
 `;
@@ -82,14 +71,15 @@ export const OverSelect = styled.div`
 	bottom: 0;
 `;
 
-export const CheckBoxes = styled.div`
+export const HeightBoxes = styled.div`
 	display: none;
 	border: 1px lightgray solid;
 	padding: 10px;
-	width: 160px;
+	width: 200px;
 	position: absolute;
 	background-color: white;
-	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: center;
 `;
 
 export const Label = styled.label`
@@ -103,7 +93,7 @@ export const Label = styled.label`
 	}
 `;
 
-export const ClearButton = styled.button`
+export const Button = styled.button`
 	background-color: white;
 	border-radius: 5px;
 	border: 1px solid gray;
@@ -114,4 +104,18 @@ export const ClearButton = styled.button`
 		color: white;
 		cursor: pointer;
 	}
+`;
+
+export const HeightInput = styled.input`
+	width: 50px;
+	margin: 0 5px;
+`;
+
+export const InputContainer = styled.div`
+	display: flex;
+`;
+export const ButtonContainer = styled.div`
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
 `;

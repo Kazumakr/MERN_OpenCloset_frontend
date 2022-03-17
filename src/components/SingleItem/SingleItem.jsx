@@ -11,11 +11,7 @@ import {
 	Img,
 	ItemInfo,
 	Name,
-	Price,
-	Size,
-	Color,
-	Brand,
-	Fabric,
+	Desc,
 	Note,
 	CommentContainer,
 	Form,
@@ -42,6 +38,7 @@ const SingleItem = () => {
 			.get("/items/" + path)
 			.then((res) => {
 				setItem(res.data);
+				setIsLiked(res.data.likes?.some((liker) => liker === user._id));
 			})
 			.catch((err) => {
 				console.log(err);
@@ -76,7 +73,6 @@ const SingleItem = () => {
 				userId: user._id,
 			})
 			.then((res) => {
-				console.log("comment submit");
 				setItem(res.data);
 			})
 			.catch((err) => {
@@ -99,7 +95,6 @@ const SingleItem = () => {
 		await axiosInstance
 			.put(`/items/${item._id}/unlikes`, { userId: user._id })
 			.then((res) => {
-				console.log(res);
 				setIsLiked(false);
 				setItem(res.data);
 			})
@@ -131,11 +126,13 @@ const SingleItem = () => {
 					</Edit>
 				)}
 				<Name>{item.name}</Name>
-				<Price>Price : {item.price && `${item.price} USD`}</Price>
-				<Color>Color : {item.color}</Color>
-				<Size>Size : {item.size}</Size>
-				<Brand>Brand : {item.brand}</Brand>
-				<Fabric>Fabric : {item.fabric}</Fabric>
+				<Desc>Price : {item.price && `${item.price} USD`}</Desc>
+				<Desc>Color : {item.color}</Desc>
+				<Desc>Size : {item.size}</Desc>
+				<Desc>Brand : {item.brand}</Desc>
+				<Desc>Fabric : {item.fabric}</Desc>
+				<Desc>Category : {item.category}</Desc>
+				<Desc>Subcategory : {item.subcategory}</Desc>
 				<Note>Note : {item.note}</Note>
 				<div>
 					{isLiked ? (

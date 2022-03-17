@@ -8,12 +8,13 @@ import {
 	Label,
 	Input,
 	Button,
-	Annouce,
+	Gide,
 } from "./DeleteAccountStyle";
 const DeleteAccount = () => {
 	const { user, dispatch } = useContext(Context);
 	const [email, setEmail] = useState("");
-	const handleDelete = async () => {
+	const handleDelete = async (event) => {
+		event.preventDefault();
 		await axiosInstance
 			.delete(`/users/${user._id}`, { data: { userId: user._id } })
 			.then((res) => {
@@ -35,11 +36,11 @@ const DeleteAccount = () => {
 	return (
 		<Container>
 			<Title>Delete Account</Title>
-			<Annouce>
+			<Gide>
 				If you delete your account, you will also delete your all items. <br />
 				If it is okay with you, please enter your Email address and press the
 				delete button.
-			</Annouce>
+			</Gide>
 			<Form onSubmit={handleDelete}>
 				<Label>Email</Label>
 				<Input

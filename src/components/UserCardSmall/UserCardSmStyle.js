@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	display: flex;
@@ -7,11 +8,14 @@ export const Container = styled.div`
 	margin: 15px 0;
 `;
 export const Img = styled.img`
-	width: 150px;
-	height: 150px;
+	width: 100px;
+	height: 100px;
 	border-radius: 50%;
 	object-fit: cover;
 	margin-right: 15px;
+
+	${tablet({ width: "70px", height: "70px" })}
+	${mobile({ width: "50px", height: "50px" })}
 `;
 export const UserInfo = styled.div`
 	display: flex;
@@ -27,7 +31,9 @@ export const Follow = styled.span`
 	font-size: 14px;
 	margin-right: 10px;
 `;
-export const Bio = styled.span``;
+export const Bio = styled.span`
+	word-wrap: break-word;
+`;
 
 export const Button = styled.button`
 	color: white;

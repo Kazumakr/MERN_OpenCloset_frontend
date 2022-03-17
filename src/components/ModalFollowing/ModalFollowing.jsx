@@ -10,6 +10,7 @@ import {
 	Name,
 	Wrapper,
 	Hr,
+	Title,
 } from "./ModalFollowingStyle";
 
 const ModalFollowing = ({ showFollowing, setShowFollowing, following }) => {
@@ -21,7 +22,7 @@ const ModalFollowing = ({ showFollowing, setShowFollowing, following }) => {
 			<Overlay onClick={() => setShowFollowing(false)}>
 				<Content onClick={(event) => event.stopPropagation()}>
 					<Wrapper>
-						<h2>Following</h2>
+						<Title>Following</Title>
 						<AiOutlineClose
 							style={{ fontSize: "18px", cursor: "pointer" }}
 							onClick={() => {

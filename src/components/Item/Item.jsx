@@ -21,27 +21,35 @@ const Item = ({ item }) => {
 	const publicFolder = "http://localhost:5000/images/";
 	return (
 		<Container>
-			<Img
-				src={
-					item.images
-						? "http://localhost:5000/api/image/" + item.images
-						: publicFolder + "NoItemImage.jpg"
-				}
-			/>
+			<Link to={`/items/${item._id}`}>
+				<Img
+					src={
+						item.images
+							? "http://localhost:5000/api/image/" + item.images
+							: publicFolder + "NoItemImage.jpg"
+					}
+				/>
+			</Link>
 			<Wrapper>
-				<ItemInfo>
-					<Name>{item.userId.username}</Name>
-					{item.price && <Price>${item.price} USD</Price>}
-					{item.color && <Color>{item.color}</Color>}
-					<Likes>0 Likes</Likes>
-				</ItemInfo>
-				{path === "" && (
-					<Link to={`/${item.userId._id}`} style={{ color: "black" }}>
+				<Link to={`items/${item._id}`} style={{ color: "black" }}>
+					<ItemInfo>
+						<Name>{item.name}</Name>
+						{item.price && <Price>${item.price} USD</Price>}
+						{item.color && <Color color={item.color} />}
+						{item.likes?.length > 1 ? (
+							<Likes>{item.likes?.length} Likes</Likes>
+						) : (
+							<Likes>{item.likes?.length} Like</Likes>
+						)}
+					</ItemInfo>
+				</Link>
+				{(path === "" || path === "likeditems") && (
+					<Link to={`/${item.user._id}`} style={{ color: "black" }}>
 						<UserInfo>
 							<UserImg
 								src={
-									item.userId.photo
-										? "http://localhost:5000/api/image/" + item.userId.photo
+									item.user.photo
+										? "http://localhost:5000/api/image/" + item.user.photo
 										: publicFolder + "NoImage.png"
 								}
 								alt=""

@@ -1,45 +1,48 @@
 import styled from "styled-components";
+import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	display: flex;
 	justify-content: center;
+	width: 80%;
+	margin: 0 auto;
+	${mobile({ width: "90%" })}
+	${tablet({ flexDirection: "column" })}
 `;
 export const ImgContainer = styled.div`
 	padding: 20px;
+	display: flex;
+	justify-content: center;
+	flex: 1;
 `;
 export const Img = styled.img`
-	width: 500px;
+	width: 90%;
 	height: 100%;
 	object-fit: cover;
+
+	${tablet({ width: "100%" })}
 `;
 export const ItemInfo = styled.div`
+	flex: 1;
 	display: flex;
 	flex-direction: column;
-	width: 500px;
+	width: 50%;
 	margin-top: 20px;
 	padding: 10px;
+	${tablet({ width: "100%" })}
 `;
 export const Name = styled.span`
 	font-size: 24px;
 	margin-bottom: 10px;
 `;
-export const Price = styled.span`
+export const Desc = styled.span`
 	margin-bottom: 10px;
 `;
-export const Color = styled.span`
-	margin-bottom: 10px;
-`;
-export const Size = styled.span`
-	margin-bottom: 10px;
-`;
-export const Brand = styled.span`
-	margin-bottom: 10px;
-`;
-export const Fabric = styled.span`
-	margin-bottom: 10px;
-`;
+
 export const Note = styled.span`
 	margin-bottom: 10px;
+	width: 100%;
+	word-wrap: break-word;
 `;
 
 export const Form = styled.form`

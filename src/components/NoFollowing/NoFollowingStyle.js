@@ -3,8 +3,8 @@ import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("http://localhost:5000/images/BackgroundImage.jpg");
-	height: 80vh;
+		url("http://localhost:5000/images/NoFollowing.jpg");
+	height: 50vh;
 
 	background-position: center;
 	background-repeat: no-repeat;
@@ -24,15 +24,17 @@ export const Content = styled.div`
 	align-items: center;
 `;
 export const Title = styled.span`
-	font-size: 60px;
+	font-size: 35px;
+	font-weight: bold;
 	margin-bottom: 10px;
-	${mobile({ fontSize: "40px" })}
+	${tablet({ fontSize: "30px" })}
+	${mobile({ fontSize: "20px" })}
 `;
 export const Subtitle = styled.span`
-	font-size: 28px;
+	font-size: 24px;
 	margin-bottom: 15px;
 	${tablet({ fontSize: "20px" })}
-	${mobile({ fontSize: "16px" })}
+	${mobile({ fontSize: "14px" })}
 `;
 export const ButtonText = styled.span`
 	position: relative;

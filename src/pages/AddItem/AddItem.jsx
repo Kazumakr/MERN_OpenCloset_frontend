@@ -35,11 +35,28 @@ const AddItem = () => {
 
 	const { user } = useContext(Context);
 
+	const ColorOptions = [
+		{ name: "White", value: "white" },
+		{ name: "Black", value: "black" },
+		{ name: "Gold", value: "gold" },
+		{ name: "Silver", value: "silver" },
+		{ name: "Blue", value: "blue" },
+		{ name: "Green", value: "green" },
+		{ name: "Pink", value: "pink" },
+		{ name: "Red", value: "red" },
+		{ name: "Gray", value: "gray" },
+		{ name: "Orange", value: "orange" },
+		{ name: "Purple", value: "purple" },
+		{ name: "Brown", value: "brown" },
+		{ name: "Beige", value: "beige" },
+		{ name: "Khaki", value: "khaki" },
+	];
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const newItem = {
 			username: user.username,
-			userId: user._id,
+			user: user._id,
 			name,
 			fabric,
 			color,
@@ -115,11 +132,20 @@ const AddItem = () => {
 					<Section>
 						<FormGroup>
 							<Label>Color</Label>
-							<Input
-								type="text"
+							<Select
+								defaultValue={"DEFAULT"}
 								name="color"
 								onChange={(event) => setColor(event.target.value)}
-							/>
+							>
+								<Option value="DEFAULT" hidden>
+									Selecte a color
+								</Option>
+								{ColorOptions.map((coloroption, index) => (
+									<Option key={index} value={coloroption.value}>
+										{coloroption.name}
+									</Option>
+								))}
+							</Select>
 						</FormGroup>
 						<FormGroup>
 							<Label>Size</Label>
@@ -156,25 +182,17 @@ const AddItem = () => {
 						<FormGroup>
 							<Label>Category</Label>
 							<Select
+								defaultValue={"DEFAULT"}
 								name="category"
 								id=""
 								onChange={(event) => setCategory(event.target.value)}
 							>
-								<Option value="" hidden>
+								<Option value="DEFAULT" hidden>
 									Selecte a category
 								</Option>
-								<Option value="clothing" selected={category === "clothing"}>
-									Clothing
-								</Option>
-								<Option
-									value="accessories"
-									selected={category === "accessories"}
-								>
-									Accessories
-								</Option>
-								<Option value="shoes" selected={category === "shoes"}>
-									Shoes
-								</Option>
+								<Option value="clothing">Clothing</Option>
+								<Option value="accessories">Accessories</Option>
+								<Option value="shoes">Shoes</Option>
 							</Select>
 						</FormGroup>
 						<FormGroup>
@@ -188,11 +206,12 @@ const AddItem = () => {
 							)}
 							{category === "clothing" && (
 								<Select
+									defaultValue={"DEFAULT"}
 									name="subcategory"
 									id=""
 									onChange={(event) => setSubcategory(event.target.value)}
 								>
-									<Option value="" hidden>
+									<Option value="DEFAULT" hidden>
 										Select a subcategory
 									</Option>
 									<Option value="outer">Outer</Option>
@@ -204,11 +223,12 @@ const AddItem = () => {
 							)}
 							{category === "accessories" && (
 								<Select
+									defaultValue={"DEFAULT"}
 									name="subcategory"
 									id=""
 									onChange={(event) => setSubcategory(event.target.value)}
 								>
-									<Option value="" hidden>
+									<Option value="DEFAULT" hidden>
 										Select a subcategory
 									</Option>
 									<Option value="bags">Bags</Option>
@@ -221,11 +241,12 @@ const AddItem = () => {
 							)}
 							{category === "shoes" && (
 								<Select
+									defaultValue={"DEFAULT"}
 									name="subcategory"
 									id=""
 									onChange={(event) => setSubcategory(event.target.value)}
 								>
-									<Option value="" selected hidden>
+									<Option value="DEFAULT" hidden>
 										Select a subcategory
 									</Option>
 									<Option value="sneakers">Sneakers</Option>
