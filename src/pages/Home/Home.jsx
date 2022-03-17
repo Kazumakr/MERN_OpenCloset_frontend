@@ -25,7 +25,7 @@ const Home = () => {
 			itemsRes.push(...response.data);
 		}
 		setItems(itemsRes);
-	}, []);
+	}, [user, search]);
 
 	return (
 		<>

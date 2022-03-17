@@ -28,7 +28,7 @@ const UsercardSm = ({ otheruser }) => {
 		if (otheruser.bio?.length > 20) {
 			setModStr(otheruser.bio.substring(0, 20) + "...");
 		}
-	}, [otheruser, user]);
+	}, [otheruser, user._id]);
 	const handleFollow = () => {
 		dispatch({ type: "UPDATE_START" });
 		axiosInstance

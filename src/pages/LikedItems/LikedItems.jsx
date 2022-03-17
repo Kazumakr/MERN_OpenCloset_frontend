@@ -22,7 +22,7 @@ const LikedItems = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-	}, [path, search]);
+	}, [path, search, user._id]);
 	return (
 		<Container>
 			<Title>Liked Items</Title>

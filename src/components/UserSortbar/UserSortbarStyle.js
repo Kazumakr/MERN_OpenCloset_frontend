@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mobile, tablet } from "../../responsive";
+import { mobile } from "../../responsive";
 
 export const Container = styled.div`
 	display: flex;
@@ -80,17 +80,6 @@ export const HeightBoxes = styled.div`
 	background-color: white;
 	flex-direction: column;
 	align-items: center;
-`;
-
-export const Label = styled.label`
-	display: block;
-	margin-bottom: 3px;
-	width: 50%;
-	cursor: pointer;
-
-	&:hover {
-		opacity: 0.7;
-	}
 `;
 
 export const Button = styled.button`

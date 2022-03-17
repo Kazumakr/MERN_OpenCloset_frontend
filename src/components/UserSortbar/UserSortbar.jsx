@@ -13,7 +13,6 @@ import {
 	SelectBox,
 	OverSelect,
 	HeightBoxes,
-	Label,
 	Button,
 	HeightInput,
 	InputContainer,

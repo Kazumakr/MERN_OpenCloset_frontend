@@ -43,7 +43,7 @@ const SingleItem = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-	}, [path, user]);
+	}, [path, user._id]);
 
 	const handleDelete = async () => {
 		await axiosInstance

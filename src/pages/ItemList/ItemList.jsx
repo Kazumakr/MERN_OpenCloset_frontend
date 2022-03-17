@@ -11,7 +11,7 @@ import { Container } from "./ItemListStyle";
 
 const ItemList = () => {
 	const [items, setItems] = useState([]);
-	const { user } = useContext(Context);
+	// const { user } = useContext(Context);
 	const { search } = useLocation();
 
 	const location = useLocation();

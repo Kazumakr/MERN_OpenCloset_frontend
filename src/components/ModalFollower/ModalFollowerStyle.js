@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { mobile, tablet } from "../../responsive";
 
 export const Overlay = styled.div`
 	position: fixed;

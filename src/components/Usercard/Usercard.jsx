@@ -30,7 +30,7 @@ const Usercard = ({ pageuser }) => {
 		} else {
 			setIsFollowed(false);
 		}
-	}, [pageuser, user]);
+	}, [pageuser, user._id]);
 	const handleFollow = () => {
 		dispatch({ type: "UPDATE_START" });
 		axiosInstance
