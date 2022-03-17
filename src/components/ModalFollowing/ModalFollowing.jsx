@@ -15,7 +15,7 @@ import {
 
 const ModalFollowing = ({ showFollowing, setShowFollowing, following }) => {
 	const navigate = useNavigate();
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 
 	if (showFollowing) {
 		return (
@@ -36,7 +36,8 @@ const ModalFollowing = ({ showFollowing, setShowFollowing, following }) => {
 							<Img
 								src={
 									followinguser?.photo
-										? "http://localhost:5000/api/image/" + followinguser.photo
+										? "https://mern-opencloset.herokuapp.com/api/image/" +
+										  followinguser.photo
 										: publicFolder + "NoImage.png"
 								}
 							/>

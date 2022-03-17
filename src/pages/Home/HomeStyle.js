@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mobile, tablet } from "../../responsive";
+import { mobile } from "../../responsive";
 
 export const Wrapper = styled.div`
 	display: flex;
@@ -23,7 +23,5 @@ export const Hr = styled.hr`
 
 export const NoFollowing = styled.div`
 	display: flex;
-	/* justify-content: center; */
-	/* align-items: center; */
 	height: 400px;
 `;

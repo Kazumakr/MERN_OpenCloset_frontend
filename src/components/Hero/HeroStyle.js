@@ -3,7 +3,7 @@ import { mobile, tablet } from "../../responsive";
 
 export const Container = styled.div`
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("http://localhost:5000/images/BackgroundImage.jpg");
+		url("https://mern-opencloset.herokuapp.com/images/BackgroundImage.jpg");
 	height: 80vh;
 
 	background-position: center;

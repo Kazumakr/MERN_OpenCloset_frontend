@@ -28,7 +28,7 @@ const Navbar = () => {
 	const [show, setShow] = useState(false);
 	const ref = useRef();
 
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 
 	const location = useLocation();
 	const path = location.pathname.split("/")[1];
@@ -62,7 +62,9 @@ const Navbar = () => {
 			path === "setting" ||
 			path === "users" ||
 			path === "additem" ||
-			path === "items" ? (
+			path === "items" ||
+			path === "changepassword" ||
+			path === "deleteaccount" ? (
 				<Center style={{ display: "none" }}></Center>
 			) : (
 				<Center>
@@ -163,18 +165,7 @@ const Navbar = () => {
 			)}
 			{!(user === null) && (
 				<Right>
-					<NavList
-						ref={ref}
-						style={
-							path === "" ||
-							path === "setting" ||
-							path === "users" ||
-							path === "additem" ||
-							path === "items"
-								? { justifyContent: "flex-end", paddingRight: "20px" }
-								: { justifyContent: "center" }
-						}
-					>
+					<NavList ref={ref}>
 						<StyledLink to={`${user?._id}`}>
 							<NavListItem>Items</NavListItem>
 						</StyledLink>
@@ -189,7 +180,8 @@ const Navbar = () => {
 							<Img
 								src={
 									user?.photo
-										? "http://localhost:5000/api/image/" + user.photo
+										? "https://mern-opencloset.herokuapp.com/api/image/" +
+										  user.photo
 										: publicFolder + "NoImage.png"
 								}
 							/>

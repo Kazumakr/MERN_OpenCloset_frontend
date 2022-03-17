@@ -22,7 +22,7 @@ const Usercard = ({ pageuser }) => {
 	const [showFollowing, setShowFollowing] = useState(false);
 	const [showFollower, setShowFollower] = useState(false);
 
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 	useEffect(() => {
 		setFollowers(pageuser.followers);
 		if (pageuser.followers?.some((follower) => follower._id === user._id)) {
@@ -30,7 +30,7 @@ const Usercard = ({ pageuser }) => {
 		} else {
 			setIsFollowed(false);
 		}
-	}, [pageuser]);
+	}, [pageuser, user]);
 	const handleFollow = () => {
 		dispatch({ type: "UPDATE_START" });
 		axiosInstance
@@ -67,7 +67,8 @@ const Usercard = ({ pageuser }) => {
 			<Img
 				src={
 					pageuser?.photo
-						? "http://localhost:5000/api/image/" + pageuser.photo
+						? "https://mern-opencloset.herokuapp.com/api/image/" +
+						  pageuser.photo
 						: publicFolder + "NoImage.png"
 				}
 			/>

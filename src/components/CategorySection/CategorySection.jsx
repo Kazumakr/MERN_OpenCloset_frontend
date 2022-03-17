@@ -16,7 +16,10 @@ const CategorySection = () => {
 			<Wrapper>
 				<Link to={`/${user._id}/?category=clothing`}>
 					<ImgContainer>
-						<Img src="http://localhost:5000/images/clothing.jpg" alt="" />
+						<Img
+							src="https://mern-opencloset.herokuapp.com/images/clothing.jpg"
+							alt=""
+						/>
 					</ImgContainer>
 					<Title>Clothing</Title>
 				</Link>
@@ -24,7 +27,10 @@ const CategorySection = () => {
 			<Wrapper>
 				<Link to={`/${user._id}/?category=accessories`}>
 					<ImgContainer>
-						<Img src="http://localhost:5000/images/accessories.jpg" alt="" />
+						<Img
+							src="https://mern-opencloset.herokuapp.com/images/accessories.jpg"
+							alt=""
+						/>
 					</ImgContainer>
 					<Title>Accessories</Title>
 				</Link>
@@ -32,7 +38,10 @@ const CategorySection = () => {
 			<Wrapper>
 				<Link to={`/${user._id}/?category=shoes`}>
 					<ImgContainer>
-						<Img src="http://localhost:5000/images/shoes.jpg" alt="" />
+						<Img
+							src="https://mern-opencloset.herokuapp.com/images/shoes.jpg"
+							alt=""
+						/>
 					</ImgContainer>
 					<Title>Shoes</Title>
 				</Link>

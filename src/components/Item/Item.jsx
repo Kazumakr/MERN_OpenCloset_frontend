@@ -18,14 +18,14 @@ import {
 const Item = ({ item }) => {
 	const location = useLocation();
 	const path = location.pathname.split("/")[1];
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 	return (
 		<Container>
 			<Link to={`/items/${item._id}`}>
 				<Img
 					src={
 						item.images
-							? "http://localhost:5000/api/image/" + item.images
+							? "https://mern-opencloset.herokuapp.com/api/image/" + item.images
 							: publicFolder + "NoItemImage.jpg"
 					}
 				/>
@@ -49,7 +49,8 @@ const Item = ({ item }) => {
 							<UserImg
 								src={
 									item.user.photo
-										? "http://localhost:5000/api/image/" + item.user.photo
+										? "https://mern-opencloset.herokuapp.com/api/image/" +
+										  item.user.photo
 										: publicFolder + "NoImage.png"
 								}
 								alt=""

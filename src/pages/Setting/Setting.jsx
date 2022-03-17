@@ -35,7 +35,7 @@ const Setting = () => {
 
 	const { user, dispatch } = useContext(Context);
 
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 
 	useEffect(() => {
 		setUsername(user.username);
@@ -101,7 +101,8 @@ const Setting = () => {
 							<Img
 								src={
 									user?.photo
-										? "http://localhost:5000/api/image/" + user.photo
+										? "https://mern-opencloset.herokuapp.com/api/image/" +
+										  user.photo
 										: publicFolder + "NoImage.png"
 								}
 								alt="profilePicture"

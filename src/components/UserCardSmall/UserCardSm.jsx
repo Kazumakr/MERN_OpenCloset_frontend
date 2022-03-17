@@ -12,7 +12,7 @@ import {
 	Button,
 } from "./UserCardSmStyle";
 const UsercardSm = ({ otheruser }) => {
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 	const { user, dispatch } = useContext(Context);
 	const [isFollowed, setIsFollowed] = useState(false);
 	const [followers, setFollowers] = useState({});
@@ -28,7 +28,7 @@ const UsercardSm = ({ otheruser }) => {
 		if (otheruser.bio?.length > 20) {
 			setModStr(otheruser.bio.substring(0, 20) + "...");
 		}
-	}, [otheruser]);
+	}, [otheruser, user]);
 	const handleFollow = () => {
 		dispatch({ type: "UPDATE_START" });
 		axiosInstance
@@ -70,7 +70,8 @@ const UsercardSm = ({ otheruser }) => {
 				<Img
 					src={
 						otheruser.photo
-							? "http://localhost:5000/api/image/" + otheruser.photo
+							? "https://mern-opencloset.herokuapp.com/api/image/" +
+							  otheruser.photo
 							: publicFolder + "NoImage.png"
 					}
 					alt=""

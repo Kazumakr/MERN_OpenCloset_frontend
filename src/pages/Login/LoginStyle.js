@@ -8,7 +8,7 @@ export const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("http://localhost:5000/images/LoginBackground.jpg");
+		url("https://mern-opencloset.herokuapp.com/images/LoginBackground.jpg");
 	background-size: cover;
 `;
 

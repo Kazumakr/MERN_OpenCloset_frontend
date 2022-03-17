@@ -9,7 +9,7 @@ export const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("http://localhost:5000/images/SignupBackground.jpg");
+		url("https://mern-opencloset.herokuapp.com/images/SignupBackground.jpg");
 	background-size: cover;
 	${tablet({ height: "100%", padding: "20px 0" })}
 `;

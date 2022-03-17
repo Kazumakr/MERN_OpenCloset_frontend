@@ -31,7 +31,7 @@ const SingleItem = () => {
 	const [comment, setComment] = useState("");
 	const { user } = useContext(Context);
 
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 
 	useEffect(() => {
 		axiosInstance
@@ -43,7 +43,7 @@ const SingleItem = () => {
 			.catch((err) => {
 				console.log(err);
 			});
-	}, [path]);
+	}, [path, user]);
 
 	const handleDelete = async () => {
 		await axiosInstance
@@ -108,7 +108,7 @@ const SingleItem = () => {
 				<Img
 					src={
 						item.images
-							? "http://localhost:5000/api/image/" + item.images
+							? "https://mern-opencloset.herokuapp.com/api/image/" + item.images
 							: publicFolder + "NoItemImage.jpg"
 					}
 				/>

@@ -42,7 +42,7 @@ const EditItem = () => {
 
 	const { user } = useContext(Context);
 
-	const publicFolder = "http://localhost:5000/images/";
+	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 
 	const ColorOptions = [
 		{ name: "White", value: "white" },
@@ -134,7 +134,8 @@ const EditItem = () => {
 							<Img
 								src={
 									images
-										? "http://localhost:5000/api/image/" + images
+										? "https://mern-opencloset.herokuapp.com/api/image/" +
+										  images
 										: publicFolder + "NoItemImage.jpg"
 								}
 								alt="ItemImages"
