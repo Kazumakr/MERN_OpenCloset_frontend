@@ -2,10 +2,12 @@
 
 This project is an application that manages items such as clothes and accessories that you have with data, and shares them with other users.
 
+![OpenClosetScreenshot](https://user-images.githubusercontent.com/67501734/158911606-16f954a2-cffa-4e6a-96be-d9cc9b0b7b2a.png)
+
 Project Link: [https://quizzical-panini-3b7a85.netlify.app/]
 
-Test Account
-Email: test@test.com
+Test Account  
+Email: test@test.com  
 Password: TestPassword
 
 Backend : [https://github.com/Kazumakr/MERN_OpenCloset_backend]
@@ -21,9 +23,9 @@ Backend : [https://github.com/Kazumakr/MERN_OpenCloset_backend]
 
 ## Description
 
-I built this project for three reasons:
-1: I want to see what clothes I have in my closet while shopping.
-2: I want to see what kind of clothes other people have.
+I built this project for three reasons:  
+1: I want to see what clothes I have in my closet while shopping.  
+2: I want to see what kind of clothes other people have.  
 3: I want to see my friends' sizes and what kind of clothes they like (e.g. colors, brands, etc.) when choosing gifts for them.
 
 It would also be useful for community creation and marketing purposes because of its social media features such as follow, comment, and like.
