@@ -15,16 +15,20 @@ const Home = () => {
 	const { search } = useLocation();
 
 	const { user } = useContext(Context);
-	let itemsRes = [];
 
-	useEffect(async () => {
-		for (let id of user.following) {
-			const response = await axiosInstance.get(
-				`/items/followingitems/${id}` + search
-			);
-			itemsRes.push(...response.data);
+	useEffect(() => {
+		let itemsRes = [];
+		async function fetchData() {
+			for (let i = 0; i < user.following.length; i++) {
+				// fetchData(id);
+				const response = await axiosInstance.get(
+					`/items/followingitems/${user.following[i]}` + search
+				);
+				itemsRes.push(...response.data);
+			}
+			setItems(itemsRes);
 		}
-		setItems(itemsRes);
+		fetchData();
 	}, [user, search]);
 
 	return (
