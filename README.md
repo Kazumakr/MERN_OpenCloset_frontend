@@ -1,6 +1,6 @@
 # Open Closet-Frontend
 
-This project is an application that manages items such as clothes and accessories that you have with data, and shares them with other users.
+This project is for managing items in your closet and sharing them with others.
 
 ![OpenClosetScreenshot](https://user-images.githubusercontent.com/67501734/158911606-16f954a2-cffa-4e6a-96be-d9cc9b0b7b2a.png)
 
@@ -78,11 +78,27 @@ I'm glad I learned these because I think these are basic knowledges that will he
 
 ### SignUp/Login
 
+https://user-images.githubusercontent.com/67501734/158934417-6db2211a-7be8-41de-a6d9-56d54985e022.mov
+
 ### Update user information
+
+https://user-images.githubusercontent.com/67501734/158934254-8fb48720-36f2-41c3-9e62-3554b0c4e926.mov
 
 ### Add a new item
 
-### Update an item/ Delete an item
+https://user-images.githubusercontent.com/67501734/158934217-1dbaff6d-478c-4e15-9fb5-f40f926d1a45.mov
+
+### Update an item
+
+https://user-images.githubusercontent.com/67501734/158934097-69bd24d8-0a03-440e-8233-881f8edf2b6a.mov
+
+### Delete an item
+
+https://user-images.githubusercontent.com/67501734/158933912-4cada0af-ef92-467a-a952-5f62a46a5c8d.mov
+
+### Follow user
+
+https://user-images.githubusercontent.com/67501734/158933860-39e2e276-df01-4f5d-899c-04ab20dbe73c.mov
 
 ### Filter category / subcategory
 
@@ -90,7 +106,7 @@ https://user-images.githubusercontent.com/67501734/158933380-a64e1425-76a3-4894-
 
 ### Filter color
 
-
+https://user-images.githubusercontent.com/67501734/158933558-04c6b508-896f-4db7-8022-b217de733ba8.mov
 
 ### Search by Item name / Brand
 
@@ -102,20 +118,19 @@ https://user-images.githubusercontent.com/67501734/158933356-1fd940ab-a3a4-45d3-
 
 ### Like/Comment
 
+https://user-images.githubusercontent.com/67501734/158933754-434a964c-b40a-4f15-9de1-f436cdb04830.mov
+
 ### ChangePassword
 
 https://user-images.githubusercontent.com/67501734/158932966-41b113cf-b488-4b83-b133-f2348dea8ea6.mov
-
 
 ### Logout
 
 https://user-images.githubusercontent.com/67501734/158932940-cd69b5f2-b00d-4b82-828a-795a3c1f569f.mov
 
-
 ### Delete a user
 
 https://user-images.githubusercontent.com/67501734/158932893-139abf53-20b0-4cc4-a215-7ed1a612046a.mov
-
 
 ## License
 
