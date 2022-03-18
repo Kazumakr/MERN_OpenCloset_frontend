@@ -2,6 +2,8 @@
 
 This project is an application that manages items such as clothes and accessories that you have with data, and shares them with other users.
 
+![OpenClosetScreenshot](https://user-images.githubusercontent.com/67501734/158911606-16f954a2-cffa-4e6a-96be-d9cc9b0b7b2a.png)
+
 Project Link: [https://quizzical-panini-3b7a85.netlify.app/]
 
 Test Account  
@@ -73,6 +75,27 @@ I'm glad I learned these because I think these are basic knowledges that will he
    ```
 
 ## Usage
+
+### SignUp/Login
+
+
+### Add a new item
+
+
+### Update an item/ Delete an item
+
+
+### Search by keywords / category / user
+
+
+### Like/Comment
+
+
+### Update user information
+
+
+### Delete a user
+
 
 ## License
 
