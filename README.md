@@ -76,6 +76,27 @@ I'm glad I learned these because I think these are basic knowledges that will he
 
 ## Usage
 
+### SignUp/Login
+
+
+### Add a new item
+
+
+### Update an item/ Delete an item
+
+
+### Search by keywords / category / user
+
+
+### Like/Comment
+
+
+### Update user information
+
+
+### Delete a user
+
+
 ## License
 
 License under the [MIT License](LICENSE)
