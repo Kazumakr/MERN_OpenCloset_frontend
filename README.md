@@ -78,23 +78,46 @@ I'm glad I learned these because I think these are basic knowledges that will he
 
 ### SignUp/Login
 
+### Update user information
 
 ### Add a new item
 
-
 ### Update an item/ Delete an item
 
+### Filter category / subcategory
 
-### Search by keywords / category / user
+https://user-images.githubusercontent.com/67501734/158933380-a64e1425-76a3-4894-b6f3-a3c66b6fe04b.mov
 
+### Filter color
+
+
+
+### Search by Item name / Brand
+
+https://user-images.githubusercontent.com/67501734/158932989-03a01461-6e45-4862-b7e7-84c14c26f7dd.mov
+
+### Sort by newest, lowest price, hightest price
+
+https://user-images.githubusercontent.com/67501734/158933356-1fd940ab-a3a4-45d3-9d8b-9f567420e03e.mov
 
 ### Like/Comment
 
+### ChangePassword
 
-### Update user information
+https://user-images.githubusercontent.com/67501734/158932966-41b113cf-b488-4b83-b133-f2348dea8ea6.mov
+
+
+### Logout
+
+https://user-images.githubusercontent.com/67501734/158932940-cd69b5f2-b00d-4b82-828a-795a3c1f569f.mov
 
 
 ### Delete a user
+
+https://user-images.githubusercontent.com/67501734/158932893-139abf53-20b0-4cc4-a215-7ed1a612046a.mov
+
+
+## License
 
 
 ## License
