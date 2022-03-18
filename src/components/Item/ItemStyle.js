@@ -9,18 +9,24 @@ export const Container = styled.div`
 	color: black;
 
 	width: 24%;
-	${mobile({ width: "49%" })}
 	${tablet({ width: "49%" })}
+`;
+export const ImgContainer = styled.div`
+	width: 100%;
+	height: 400px;
+	${tablet({ height: "500px" })}
+	${mobile({ height: "250px" })}
 `;
 
 export const Img = styled.img`
 	width: 100%;
+	height: 100%;
+	object-fit: cover;
 `;
 export const ItemInfo = styled.div`
 	display: flex;
 	flex-direction: column;
-	height: 100px;
-	margin-top: 10px;
+	margin: 10px 0;
 `;
 export const Name = styled.span`
 	font-size: 20px;
@@ -44,6 +50,7 @@ export const Likes = styled.span`
 export const Wrapper = styled.div`
 	display: flex;
 	width: 100%;
+
 	justify-content: space-between;
 `;
 export const Username = styled.span`
@@ -53,7 +60,6 @@ export const Username = styled.span`
 export const UserInfo = styled.div`
 	display: flex;
 	align-items: center;
-	height: 35px;
 	margin-top: 10px;
 	padding: 0 10px;
 	&:hover {

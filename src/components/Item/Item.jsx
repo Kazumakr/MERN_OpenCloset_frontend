@@ -13,6 +13,7 @@ import {
 	UserInfo,
 	Wrapper,
 	UserImg,
+	ImgContainer,
 } from "./ItemStyle";
 
 const Item = ({ item }) => {
@@ -21,15 +22,18 @@ const Item = ({ item }) => {
 	const publicFolder = "https://mern-opencloset.herokuapp.com/images/";
 	return (
 		<Container>
-			<Link to={`/items/${item._id}`}>
-				<Img
-					src={
-						item.images
-							? "https://mern-opencloset.herokuapp.com/api/image/" + item.images
-							: publicFolder + "NoItemImage.jpg"
-					}
-				/>
-			</Link>
+			<ImgContainer>
+				<Link to={`/items/${item._id}`}>
+					<Img
+						src={
+							item.images
+								? "https://mern-opencloset.herokuapp.com/api/image/" +
+								  item.images
+								: publicFolder + "NoItemImage.jpg"
+						}
+					/>
+				</Link>
+			</ImgContainer>
 			<Wrapper>
 				<Link to={`items/${item._id}`} style={{ color: "black" }}>
 					<ItemInfo>
